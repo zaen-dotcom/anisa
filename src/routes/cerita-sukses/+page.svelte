@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { TESTIMONIAL } from '$lib/data/sakura';
 	import { playPopSound } from '$lib/utils/sound';
-	import { Quote, Award, CheckCircle, Heart, Star, Sparkles, Smile, MessageSquare, TrendingUp, Users } from 'lucide-svelte';
+	import { Quote, Award, Star, Smile, TrendingUp, Users } from 'lucide-svelte';
 </script>
 
 <svelte:head>
@@ -81,9 +81,10 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			{#each TESTIMONIAL.observations as obs, idx}
-				<div
+				<button
+					type="button"
 					onclick={() => playPopSound(450)}
-					class="bg-white rounded-3xl p-6 border-2 border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex items-start gap-4 cursor-pointer"
+					class="w-full text-left bg-white rounded-3xl p-6 border-2 border-pink-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex items-start gap-4 cursor-pointer font-normal"
 				>
 					<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white font-heading font-black text-lg flex items-center justify-center shrink-0 shadow-md">
 						#{idx + 1}
@@ -97,7 +98,7 @@
 							{obs}
 						</p>
 					</div>
-				</div>
+				</button>
 			{/each}
 		</div>
 	</div>

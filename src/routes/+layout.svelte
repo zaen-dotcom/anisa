@@ -15,7 +15,10 @@
 	<meta property="og:description" content="Media terapi stimulasi sensorik alami untuk anak autis dan kebutuhan khusus." />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-[#FFF5F6] via-[#FFF9F0] to-[#FFF5F6] text-slate-800 relative flex flex-col font-sans selection:bg-pink-300 selection:text-pink-900">
+<div
+	data-sveltekit-preload-data="hover"
+	class="min-h-screen bg-gradient-to-b from-[#FFF5F6] via-[#FFF9F0] to-[#FFF5F6] text-slate-800 relative flex flex-col font-sans selection:bg-pink-300 selection:text-pink-900"
+>
 	<!-- Background Floating Sakura Petals -->
 	<SakuraPetals />
 

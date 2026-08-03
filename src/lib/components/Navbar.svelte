@@ -107,9 +107,6 @@
 		>
 			<div
 				class="bg-white/95 backdrop-blur-xl w-4/5 max-w-sm h-full p-6 flex flex-col justify-between shadow-2xl border-l border-pink-100 animate-in slide-in-from-right duration-250"
-				onclick={(e) => e.stopPropagation()}
-				onkeydown={(e) => e.stopPropagation()}
-				role="document"
 			>
 				<div class="space-y-6">
 					<div class="flex items-center justify-between border-b border-slate-100 pb-4">

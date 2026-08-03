@@ -149,9 +149,10 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			{#each TEAM_MEMBERS as member}
-				<div
+				<button
+					type="button"
 					onclick={() => playPopSound(500)}
-					class="bg-white rounded-3xl p-6 border-2 border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center space-y-4 cursor-pointer"
+					class="w-full text-center bg-white rounded-3xl p-6 border-2 border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 space-y-4 cursor-pointer font-normal"
 				>
 					<div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-pink-400 to-rose-500 text-white font-heading font-black text-2xl flex items-center justify-center shadow-md shadow-pink-400/30">
 						{member.name.split(' ')[0][0]}{member.name.split(' ')[1] ? member.name.split(' ')[1][0] : ''}
@@ -175,7 +176,7 @@
 					<div class="pt-3 border-t border-slate-100 flex items-center justify-center gap-1 text-[11px] font-semibold text-slate-500">
 						<Heart class="w-3.5 h-3.5 text-rose-500" /> Tim Peneliti Polije
 					</div>
-				</div>
+				</button>
 			{/each}
 		</div>
 	</div>
