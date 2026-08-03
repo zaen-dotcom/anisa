@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+	font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+	--font-heading: 'Fredoka', cursive, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+	font-family: var(--font-heading);
+}
+
+/* Custom 3D CSS utilities */
+.perspective-1000 {
+	perspective: 1000px;
+}
+
+.preserve-3d {
+	transform-style: preserve-3d;
+}
+
+.backface-hidden {
+	backface-visibility: hidden;
+}
+
+/* Floating Sakura Petals Animation */
+@keyframes floatSakura {
+	0% {
+		transform: translateY(-10vh) translateX(0) rotate(0deg) scale(0.8);
+		opacity: 0;
+	}
+	10% {
+		opacity: 0.9;
+	}
+	90% {
+		opacity: 0.9;
+	}
+	100% {
+		transform: translateY(105vh) translateX(120px) rotate(360deg) scale(1.2);
+		opacity: 0;
+	}
+}
+
+.animate-float-sakura {
+	animation: floatSakura 12s linear infinite;
+}
+
+/* Bouncy hover states */
+.bouncy-hover {
+	transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.bouncy-hover:hover {
+	transform: scale(1.05) translateY(-4px) rotate(-1deg);
+}
+.bouncy-hover:active {
+	transform: scale(0.96) translateY(0);
+}
+
+/* Custom Glassmorphism */
+.glass-card {
+	background: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #FFF5F6;
+}
+::-webkit-scrollbar-thumb {
+	background: #FFB6C1;
+	border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #FF69B4;
+}
