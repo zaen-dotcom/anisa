@@ -29,11 +29,11 @@
 
 <header class="sticky top-0 z-40 w-full px-4 sm:px-8 py-3">
 	<nav class="max-w-6xl mx-auto bg-white/80 backdrop-blur-xl border border-pink-100/80 rounded-3xl shadow-lg shadow-pink-500/5 px-4 sm:px-6 py-3 flex items-center justify-between transition-all">
-		<!-- Brand Logo -->
+		<!-- Brand Logo (Left) -->
 		<a
 			href="/"
 			onclick={closeMobileMenu}
-			class="flex items-center gap-2.5 group cursor-pointer"
+			class="flex items-center gap-2.5 group cursor-pointer shrink-0"
 		>
 			<div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white flex items-center justify-center shadow-md shadow-pink-400/30 group-hover:scale-105 transition-all duration-300">
 				<Flower class="w-6 h-6 animate-pulse" />
@@ -53,7 +53,7 @@
 			</div>
 		</a>
 
-		<!-- Desktop Nav Items -->
+		<!-- Desktop Nav Items (Center) -->
 		<div class="hidden lg:flex items-center gap-1 bg-pink-50/50 p-1.5 rounded-2xl border border-pink-100/60">
 			{#each navLinks as link}
 				{@const isActive = $page.url.pathname === link.href}
@@ -69,33 +69,32 @@
 			{/each}
 		</div>
 
-		<!-- CTA Button -->
-		<div class="hidden sm:flex items-center gap-3">
+		<!-- Right Group: CTA Button + Mobile Hamburger Toggle (Right Aligned) -->
+		<div class="flex items-center gap-2 sm:gap-3 shrink-0">
 			<a
 				href={SITE_CONTACT.waLink}
 				target="_blank"
 				rel="noopener noreferrer"
 				onclick={() => playPopSound(600)}
-				class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:to-teal-600 px-5 py-2.5 rounded-2xl font-bold text-xs shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
+				class="hidden sm:flex bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:to-teal-600 px-4 sm:px-5 py-2.5 rounded-2xl font-bold text-xs shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 items-center gap-2 cursor-pointer whitespace-nowrap"
 			>
 				<MessageCircle class="w-4 h-4" />
 				<span>Pesan Sekarang</span>
 			</a>
-		</div>
 
-		<!-- Mobile Menu Toggle Button -->
-		<button
-			type="button"
-			onclick={toggleMobileMenu}
-			class="lg:hidden p-2.5 rounded-2xl bg-pink-50 text-pink-600 hover:bg-pink-100 transition-all active:scale-95 cursor-pointer flex items-center justify-center min-w-[44px] min-h-[44px]"
-			aria-label="Toggle Navigation Menu"
-		>
-			{#if isMobileOpen}
-				<X class="w-6 h-6" />
-			{:else}
-				<Menu class="w-6 h-6" />
-			{/if}
-		</button>
+			<button
+				type="button"
+				onclick={toggleMobileMenu}
+				class="lg:hidden p-2.5 rounded-2xl bg-pink-50 text-pink-600 hover:bg-pink-100 transition-all active:scale-95 cursor-pointer flex items-center justify-center min-w-[44px] min-h-[44px]"
+				aria-label="Toggle Navigation Menu"
+			>
+				{#if isMobileOpen}
+					<X class="w-6 h-6" />
+				{:else}
+					<Menu class="w-6 h-6" />
+				{/if}
+			</button>
+		</div>
 	</nav>
 
 	<!-- Mobile Drawer Backdrop & Sidebar -->

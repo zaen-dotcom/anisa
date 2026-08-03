@@ -45,35 +45,41 @@
 		</p>
 	</div>
 
-	<!-- Contact Cards Grid -->
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+	<!-- Contact Cards Grid with equalized heights & aligned buttons -->
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
 		<!-- WhatsApp Card -->
-		<div class="bg-white rounded-3xl p-6 border-2 border-emerald-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 space-y-4">
-			<div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-bold shadow-md shadow-emerald-500/20">
-				<MessageCircle class="w-6 h-6" />
-			</div>
-			<div>
-				<span class="text-xs font-extrabold text-emerald-600 uppercase tracking-wider">WhatsApp Resmi</span>
-				<h3 class="font-heading font-extrabold text-xl text-slate-800 mt-1">
-					{SITE_CONTACT.whatsapp}
-				</h3>
-				<p class="text-slate-500 text-xs mt-1">Respon cepat untuk pemesanan & konsultasi produk SAKURA.</p>
+		<div class="bg-white rounded-3xl p-6 border-2 border-emerald-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full">
+			<div class="space-y-4 flex-1 flex flex-col justify-between">
+				<div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-bold shadow-md shadow-emerald-500/20">
+					<MessageCircle class="w-6 h-6" />
+				</div>
+				<div>
+					<span class="text-xs font-extrabold text-emerald-600 uppercase tracking-wider">WhatsApp Resmi</span>
+					<h3 class="font-heading font-extrabold text-xl text-slate-800 mt-1 tracking-tight">
+						{SITE_CONTACT.whatsapp}
+					</h3>
+					<p class="text-slate-500 text-xs mt-1 leading-relaxed">
+						Respon cepat untuk pemesanan & konsultasi produk SAKURA.
+					</p>
+				</div>
 			</div>
 
-			<div class="pt-2 flex items-center gap-2">
+			<div class="pt-4 mt-auto border-t border-slate-100 flex items-center gap-2">
 				<a
 					href={SITE_CONTACT.waLink}
 					target="_blank"
 					rel="noopener noreferrer"
 					onclick={() => playPopSound(550)}
-					class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-4 rounded-xl text-center shadow-xs transition-all active:scale-95 cursor-pointer"
+					class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 px-3 rounded-xl text-center shadow-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
 				>
-					Chat WhatsApp
+					<span>Chat WhatsApp</span>
 				</a>
 				<button
+					type="button"
 					onclick={copyNumber}
-					class="p-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-xl transition-all active:scale-95 cursor-pointer"
+					class="p-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-xl transition-all active:scale-95 cursor-pointer shrink-0"
 					title="Salin Nomor WA"
+					aria-label="Salin Nomor WA"
 				>
 					{#if isCopied}
 						<Check class="w-4 h-4 text-emerald-600" />
@@ -85,25 +91,29 @@
 		</div>
 
 		<!-- Instagram Card -->
-		<div class="bg-white rounded-3xl p-6 border-2 border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 space-y-4">
-			<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white flex items-center justify-center font-bold shadow-md shadow-pink-500/20">
-				<Camera class="w-6 h-6" />
-			</div>
-			<div>
-				<span class="text-xs font-extrabold text-pink-600 uppercase tracking-wider">Instagram Resmi</span>
-				<h3 class="font-heading font-extrabold text-xl text-slate-800 mt-1">
-					{SITE_CONTACT.instagram}
-				</h3>
-				<p class="text-slate-500 text-xs mt-1">Ikuti pembaruan kegiatan, dokumentasi, & testimoni.</p>
+		<div class="bg-white rounded-3xl p-6 border-2 border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full">
+			<div class="space-y-4 flex-1 flex flex-col justify-between">
+				<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white flex items-center justify-center font-bold shadow-md shadow-pink-500/20">
+					<Camera class="w-6 h-6" />
+				</div>
+				<div>
+					<span class="text-xs font-extrabold text-pink-600 uppercase tracking-wider">Instagram Resmi</span>
+					<h3 class="font-heading font-extrabold text-xl text-slate-800 mt-1 tracking-tight">
+						{SITE_CONTACT.instagram}
+					</h3>
+					<p class="text-slate-500 text-xs mt-1 leading-relaxed">
+						Ikuti pembaruan kegiatan, dokumentasi, & testimoni.
+					</p>
+				</div>
 			</div>
 
-			<div class="pt-2">
+			<div class="pt-4 mt-auto border-t border-slate-100">
 				<a
 					href={SITE_CONTACT.igLink}
 					target="_blank"
 					rel="noopener noreferrer"
 					onclick={() => playPopSound(550)}
-					class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-xs py-2.5 px-4 rounded-xl text-center block shadow-xs transition-all active:scale-95 cursor-pointer"
+					class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-xs py-3 px-4 rounded-xl text-center block shadow-xs transition-all active:scale-95 cursor-pointer"
 				>
 					Kunjungi Instagram
 				</a>
@@ -111,23 +121,30 @@
 		</div>
 
 		<!-- Email Card -->
-		<div class="bg-white rounded-3xl p-6 border-2 border-purple-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 space-y-4">
-			<div class="w-12 h-12 rounded-2xl bg-purple-500 text-white flex items-center justify-center font-bold shadow-md shadow-purple-500/20">
-				<Mail class="w-6 h-6" />
-			</div>
-			<div>
-				<span class="text-xs font-extrabold text-purple-600 uppercase tracking-wider">Email Layanan</span>
-				<h3 class="font-heading font-extrabold text-lg text-slate-800 mt-1 break-all">
-					{SITE_CONTACT.email}
-				</h3>
-				<p class="text-slate-500 text-xs mt-1">Untuk kerjasama institusi, SLB, atau penawaran resmi.</p>
+		<div class="bg-white rounded-3xl p-6 border-2 border-purple-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full">
+			<div class="space-y-4 flex-1 flex flex-col justify-between">
+				<div class="w-12 h-12 rounded-2xl bg-purple-500 text-white flex items-center justify-center font-bold shadow-md shadow-purple-500/20">
+					<Mail class="w-6 h-6" />
+				</div>
+				<div>
+					<span class="text-xs font-extrabold text-purple-600 uppercase tracking-wider">Email Layanan</span>
+					<h3
+						class="font-heading font-extrabold text-base md:text-sm lg:text-base text-slate-800 mt-1 tracking-tight truncate"
+						title={SITE_CONTACT.email}
+					>
+						{SITE_CONTACT.email}
+					</h3>
+					<p class="text-slate-500 text-xs mt-1 leading-relaxed">
+						Untuk kerjasama institusi, SLB, atau penawaran resmi.
+					</p>
+				</div>
 			</div>
 
-			<div class="pt-2">
+			<div class="pt-4 mt-auto border-t border-slate-100">
 				<a
 					href="mailto:{SITE_CONTACT.email}"
 					onclick={() => playPopSound(550)}
-					class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs py-2.5 px-4 rounded-xl text-center block shadow-xs transition-all active:scale-95 cursor-pointer"
+					class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs py-3 px-4 rounded-xl text-center block shadow-xs transition-all active:scale-95 cursor-pointer"
 				>
 					Kirim Email
 				</a>
