@@ -14,12 +14,14 @@
 		{ href: '/kontak', label: 'Hubungi Kami' }
 	];
 
-	function toggleMobileMenu() {
+	function toggleMobileMenu(e?: Event) {
+		if (e) e.stopPropagation();
 		playPopSound(450);
 		isMobileOpen = !isMobileOpen;
 	}
 
-	function handleNavClick() {
+	function closeMobileMenu(e?: Event) {
+		if (e) e.stopPropagation();
 		playPopSound(400);
 		isMobileOpen = false;
 	}
@@ -30,7 +32,7 @@
 		<!-- Brand Logo -->
 		<a
 			href="/"
-			onclick={handleNavClick}
+			onclick={closeMobileMenu}
 			class="flex items-center gap-2.5 group cursor-pointer"
 		>
 			<div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white flex items-center justify-center shadow-md shadow-pink-400/30 group-hover:scale-105 transition-all duration-300">
@@ -57,7 +59,7 @@
 				{@const isActive = $page.url.pathname === link.href}
 				<a
 					href={link.href}
-					onclick={handleNavClick}
+					onclick={closeMobileMenu}
 					class="px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer {isActive
 						? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md shadow-pink-500/20 scale-105'
 						: 'text-slate-600 hover:text-pink-600 hover:bg-white/80'}"
@@ -81,10 +83,11 @@
 			</a>
 		</div>
 
-		<!-- Mobile Menu Button -->
+		<!-- Mobile Menu Toggle Button -->
 		<button
+			type="button"
 			onclick={toggleMobileMenu}
-			class="lg:hidden p-2 rounded-2xl bg-pink-50 text-pink-600 hover:bg-pink-100 transition-all active:scale-95 cursor-pointer"
+			class="lg:hidden p-2.5 rounded-2xl bg-pink-50 text-pink-600 hover:bg-pink-100 transition-all active:scale-95 cursor-pointer flex items-center justify-center min-w-[44px] min-h-[44px]"
 			aria-label="Toggle Navigation Menu"
 		>
 			{#if isMobileOpen}
@@ -95,18 +98,20 @@
 		</button>
 	</nav>
 
-	<!-- Mobile Drawer Overlay -->
+	<!-- Mobile Drawer Backdrop & Sidebar -->
 	{#if isMobileOpen}
 		<div
-			class="lg:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex justify-end"
-			onclick={toggleMobileMenu}
-			onkeydown={(e) => e.key === 'Escape' && toggleMobileMenu()}
-			role="button"
-			tabindex="0"
-			aria-label="Close navigation menu"
+			class="lg:hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex justify-end"
+			onclick={() => (isMobileOpen = false)}
+			onkeydown={(e) => e.key === 'Escape' && (isMobileOpen = false)}
+			role="presentation"
 		>
+			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<div
-				class="bg-white/95 backdrop-blur-xl w-4/5 max-w-sm h-full p-6 flex flex-col justify-between shadow-2xl border-l border-pink-100 animate-in slide-in-from-right duration-250"
+				class="bg-white/95 backdrop-blur-xl w-4/5 max-w-sm h-full p-6 flex flex-col justify-between shadow-2xl border-l border-pink-100 animate-in slide-in-from-right duration-200"
+				onclick={(e) => e.stopPropagation()}
+				onkeydown={(e) => e.stopPropagation()}
+				role="document"
 			>
 				<div class="space-y-6">
 					<div class="flex items-center justify-between border-b border-slate-100 pb-4">
@@ -115,8 +120,9 @@
 							<span class="font-heading font-extrabold text-lg text-pink-600">Navigasi SAKURA</span>
 						</div>
 						<button
-							onclick={toggleMobileMenu}
-							class="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200"
+							type="button"
+							onclick={closeMobileMenu}
+							class="p-2.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-pink-600 transition-all active:scale-95 cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
 							aria-label="Close drawer"
 						>
 							<X class="w-5 h-5" />
@@ -128,8 +134,8 @@
 							{@const isActive = $page.url.pathname === link.href}
 							<a
 								href={link.href}
-								onclick={handleNavClick}
-								class="px-4 py-3 rounded-2xl text-sm font-bold transition-all flex items-center justify-between {isActive
+								onclick={closeMobileMenu}
+								class="px-4 py-3 rounded-2xl text-sm font-bold transition-all flex items-center justify-between cursor-pointer {isActive
 									? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md'
 									: 'text-slate-700 hover:bg-pink-50 hover:text-pink-600'}"
 							>
@@ -147,8 +153,8 @@
 						href={SITE_CONTACT.waLink}
 						target="_blank"
 						rel="noopener noreferrer"
-						onclick={handleNavClick}
-						class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-2xl font-bold text-sm shadow-md flex items-center justify-center gap-2 text-center"
+						onclick={closeMobileMenu}
+						class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3.5 rounded-2xl font-bold text-sm shadow-md flex items-center justify-center gap-2 text-center active:scale-95 transition-all cursor-pointer"
 					>
 						<MessageCircle class="w-5 h-5" />
 						<span>Pesan via WhatsApp</span>
